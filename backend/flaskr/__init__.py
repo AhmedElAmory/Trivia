@@ -1,5 +1,3 @@
-#!/usr/bin/python
-# -*- coding: utf-8 -*-
 import os
 from flask import Flask, request, abort, jsonify
 from flask_sqlalchemy import SQLAlchemy
@@ -13,7 +11,7 @@ QUESTIONS_PER_PAGE = 10
 
 def create_app(test_config=None):
 
-  # create and configure the app
+  # Create and configure the app
 
     app = Flask(__name__)
     setup_db(app)
@@ -28,6 +26,8 @@ def create_app(test_config=None):
                              'GET,PUT,POST,DELETE,OPTIONS')
         return response
 
+
+    # Returns available categories
     @app.route('/categories')
     def retrieve_categories():
         categories = Category.query.order_by(Category.id).all()
@@ -37,7 +37,8 @@ def create_app(test_config=None):
             abort(404)
 
         return jsonify({'success': True, 'categories': categories_data})
-
+    
+    # Returns available questions
     @app.route('/questions')
     def retrieve_questions():
         categories = Category.query.order_by(Category.id).all()
@@ -63,7 +64,7 @@ def create_app(test_config=None):
             'categories': categories_data,
             'current_category': 'Science',
             })
-
+    # Delete a sepecific question
     @app.route('/question/<int:question_id>', methods=['DELETE'])
     def delete_question(question_id):
         question = Question.query.filter(Question.id
@@ -75,7 +76,7 @@ def create_app(test_config=None):
         question.delete()
 
         return jsonify({'success': True})
-
+    # Add a new question
     @app.route('/questions', methods=['POST'])
     def create_question():
 
@@ -97,6 +98,7 @@ def create_app(test_config=None):
 
             abort(422)
 
+    # Search for a question
     @app.route('/questions/search', methods=['POST'])
     def search_question():
 
@@ -122,6 +124,7 @@ def create_app(test_config=None):
 
             abort(422)
 
+    # Returns questions of a specific category
     @app.route('/category/<int:id>/questions')
     def retrieve_questionsByCategory(id):
         categories = Category.query.order_by(Category.id).all()
@@ -153,6 +156,7 @@ def create_app(test_config=None):
             'current_category': current_category,
             })
 
+    # Called upon taking a quiz
     @app.route('/quizzes', methods=['POST'])
     def take_quiz():
 
