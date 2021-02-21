@@ -20,7 +20,7 @@ This is a trivia app that :
 4) Searches for questions based on a text query string.
 5) Plays the quiz game, randomizing either all questions or within a specific category. 
 
-## README files
+## Development Setup
 
 1. [`./frontend/`](./frontend/README.md)
 2. [`./backend/`](./backend/README.md)

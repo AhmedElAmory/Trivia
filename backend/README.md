@@ -79,7 +79,7 @@ Setting the `FLASK_APP` variable to `flaskr` directs flask to use the `flaskr` d
 ## API Documentation
 ## End Points
 
-GET /questions
+### GET /questions
 
 returns a list of the available questions
 
@@ -97,9 +97,9 @@ response sample:
   "success": true
 }
 ```
-DELETE /question/\<int:question_id\>
+### DELETE /question/\<int:question_id\>
 
-deletes a certain question using it's id
+deletes a certain question using its ID
 
 response sample:
 ```
@@ -117,7 +117,7 @@ response sample:
   "success": true
 }
 ```
-POST /questions/search
+### POST /questions/search
 
 searches for the available questions containing a certain string
 
@@ -138,7 +138,7 @@ response sample:
 "currentCategory": "Science"
 }
 ```
-GET /category/\<int:id\>/questions
+### GET /category/\<int:id\>/questions
 
 returns a list of questions of a specific category
 
@@ -202,7 +202,7 @@ Van Gogh sell in his lifetime?"
   "total_questions": 7
 }
 ```
-POST /quizzes
+### POST /quizzes
 
 start a quiz of a specific category
 
@@ -228,8 +228,3 @@ createdb trivia_test
 psql trivia_test < trivia.psql
 python test_flaskr.py
 ```
-
-
-Authors:
-
-Ahmed ElAmory
